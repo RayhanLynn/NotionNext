@@ -100,8 +100,8 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-junit": "^16.0.0"
-    "react-calendar-heatmap": "^1.9.0", // 新增：热力图核心组件
-    "react-tooltip": "^5.26.3", // 新增：悬浮提示组件
+    "react-calendar-heatmap": "^1.9.0"
+    "react-tooltip": "^5.26.3"
   },
   "resolutions": {
     "axios": ">=0.21.1"
