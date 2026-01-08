@@ -298,3 +298,39 @@ img {
   @keyframes l1 {
   0% {background-position: right}
 }
+/* 热力图整体样式 */
+.contribution-heatmap-container {
+  background-color: transparent;
+}
+
+/* 月份/星期文字样式 */
+.react-calendar-heatmap text {
+  font-size: 12px;
+  fill: #666;
+}
+
+/* 深色模式适配 */
+.dark .react-calendar-heatmap text {
+  fill: #ccc;
+}
+
+/* 单元格悬停效果 */
+.react-calendar-heatmap .react-calendar-heatmap-cell:hover {
+  stroke: #333;
+  stroke-width: 1px;
+}
+
+.dark .react-calendar-heatmap .react-calendar-heatmap-cell:hover {
+  stroke: #fff;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .react-calendar-heatmap text {
+    font-size: 10px;
+  }
+  .react-calendar-heatmap-cell {
+    width: 8px !important;
+    height: 8px !important;
+  }
+}
