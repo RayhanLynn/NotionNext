@@ -33,6 +33,7 @@ import TocDrawer from './components/TocDrawer'
 import TocDrawerButton from './components/TocDrawerButton'
 import CONFIG from './config'
 import { Style } from './style'
+import ContributionHeatmap from '@/components/ContributionHeatmap'
 
 const AlgoliaSearchModal = dynamic(
   () => import('@/components/AlgoliaSearchModal'),
@@ -169,7 +170,14 @@ const LayoutBase = props => {
  * @returns
  */
 const LayoutIndex = props => {
-  return <LayoutPostList {...props} className='pt-8' />
+  // 把 LayoutPostList 包起来，透传 posts 数据给热力图
+  return (
+    <LayoutBase {...props}>
+      <LayoutPostList {...props} className='pt-8' />
+      {/* 新增：热力图组件，放在文章列表下方 */}
+      <ContributionHeatmap posts={props.posts} />
+    </LayoutBase>
+  )
 }
 
 /**
@@ -186,6 +194,8 @@ const LayoutPostList = props => {
       ) : (
         <BlogPostListScroll {...props} />
       )}
+      {/* 【可选】如果想把热力图放在列表内部，也可以加在这里 */}
+      {/* <ContributionHeatmap posts={props.posts} /> */}
     </div>
   )
 }
