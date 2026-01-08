@@ -33,7 +33,10 @@ import TocDrawer from './components/TocDrawer'
 import TocDrawerButton from './components/TocDrawerButton'
 import CONFIG from './config'
 import { Style } from './style'
-import ContributionHeatmap from '@/components/ContributionHeatmap'
+const ContributionHeatmap = dynamic(() => import('@/components/ContributionHeatmap'), {
+  ssr: false,
+  loading: () => <div className="py-8 text-center">热力图加载中...</div>
+})
 
 const AlgoliaSearchModal = dynamic(
   () => import('@/components/AlgoliaSearchModal'),
@@ -175,7 +178,7 @@ const LayoutIndex = props => {
     <LayoutBase {...props}>
       <LayoutPostList {...props} className='pt-8' />
       {/* 新增：热力图组件，放在文章列表下方 */}
-      <ContributionHeatmap posts={props.posts} />
+     {isBrowser && <ContributionHeatmap posts={props.posts} />}
     </LayoutBase>
   )
 }
